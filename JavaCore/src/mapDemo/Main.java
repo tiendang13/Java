@@ -1,6 +1,7 @@
 package mapDemo;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -12,10 +13,12 @@ public class Main {
 		Map<Integer, String> hashMap = new HashMap<>();
 		Map<Integer, String> linkedHashMap = new LinkedHashMap<>();
 		Map<Integer, String> treeMap = new TreeMap<>();
+		Hashtable hashTable;
 		
 		hashMap.put(1, "number 1");
 		hashMap.put(2, "number 2");
 		hashMap.put(3, "number 3");
+		hashTable = new Hashtable(hashMap);
 		Set<Map.Entry<Integer, String>> entrySet = hashMap.entrySet();
 		System.out.println("Entry Set Hash Map: " + entrySet.toString());
 		
@@ -48,6 +51,9 @@ public class Main {
 		
 		linkedHashMap.replace(2, "Ngu Van");
 		System.out.println("Linked Hash Map replace value: " + linkedHashMap.toString());
+		
+		hashTable.put(9, "number 9");
+		System.out.println("Hash Table: " + hashTable.toString());
 		
 	}
 
