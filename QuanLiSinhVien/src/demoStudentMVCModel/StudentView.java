@@ -7,17 +7,16 @@ import javax.swing.table.DefaultTableModel;
 
 public class StudentView extends JFrame{
     private JLabel lblTitle = new JLabel("Student Information");
-	private JLabel lblSearch = new JLabel("Name");
+	private JLabel lblSearch = new JLabel("Student ID: ");
 	private JTextField txtSearch = new JTextField(20);
 	private JButton btnSearch = new JButton("Search");
 	private JButton btnShowAll = new JButton("Show All");
 	private String colTitle[] ={"ID", "Name", "Student Code", "Average Score", "Adress", "Date of Birth"}; 
-	
+	private DefaultTableModel model = new DefaultTableModel();
 
 	public StudentView(){
         this.add(createMainPanel());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
 		pack();
         setLocationRelativeTo(null);
 	}
@@ -36,7 +35,6 @@ public class StudentView extends JFrame{
         return panel;
 	}
 	private JScrollPane createTablePanel(){
-		DefaultTableModel model = new DefaultTableModel();
 		model.setColumnIdentifiers(colTitle);
 		JTable tblInfo = new JTable(model);
 		JScrollPane sp = new JScrollPane(tblInfo);
@@ -52,19 +50,23 @@ public class StudentView extends JFrame{
 		return panel;
 	}
 	
-	public String getName(){
+	public String getID(){
 		return txtSearch.getText().trim();
 	}
 	
-	public void addSearchListener(ActionListener actionListener){
-		btnSearch.addActionListener(actionListener);
+	public void addRowToTable(String[] student){
+		model.addRow(student);
+	}
+	public void addSearchListener(ActionListener searchListener){
+		btnSearch.addActionListener(searchListener);
 	}
 	
-	public void addShowAllListener(ActionListener actionListener){
-		btnShowAll.addActionListener(actionListener);
+	public void addShowAllListener(ActionListener showAllListener){
+		btnShowAll.addActionListener(showAllListener);
 	}
 	public void displayErrorMessage(String errorMessage){
 		JOptionPane.showMessageDialog(this, errorMessage);
 	}
+	
 }
 
