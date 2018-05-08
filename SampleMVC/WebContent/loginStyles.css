@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+div#container{
+	margin: 0 auto;
+	width: 300px;
+}
+body {
+	font-family: arial;
+}
+.title {
+	margin-bottom: 20px;
+}
+.login-button {
+	margin-top: 20px;
+}
