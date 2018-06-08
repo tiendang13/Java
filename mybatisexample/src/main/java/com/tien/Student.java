@@ -1,6 +1,10 @@
 package com.tien;
 
 public class Student {
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", code=" + code + "]";
+	}
 	private int id;
 	private String name;
 	private String code;
