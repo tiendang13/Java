@@ -25,6 +25,6 @@
 	</insert>
 	
 	<delete id = "deleteById" parameterType = "int">
-   		DELETE from STUDENT WHERE USER_ID = #{id};
+   		DELETE FROM STUDENT WHERE STUDENT_ID = #{id};
 	</delete>
 </mapper>
