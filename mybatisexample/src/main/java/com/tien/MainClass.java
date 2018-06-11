@@ -44,7 +44,7 @@ public class MainClass {
 		Student newStudent = new Student(3, "Bùi Quang Trung", "KHMT2014");
 //		update(student, session);
 //		delete(1, session);
-//		insert(newStudent, session);
+		insert(newStudent, session);
 	    System.out.println("Record updated successfully");   
 	    session.commit();   
 	    session.close();	  
