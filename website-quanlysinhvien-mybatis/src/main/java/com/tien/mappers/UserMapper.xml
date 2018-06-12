@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+	<resultMap id = "result" type = "com.tien.model.User">
+	   <result property = "userId" column = "USER_ID"/>
+	   <result property = "username" column = "USER_NAME"/>
+	   <result property = "password" column = "USER_PASSWORD"/>
+	</resultMap>
+	
+	<select id = "getAll" resultMap = "result">
+		SELECT * FROM TABLE_USER;
+	</select>
+	
+	<select id = "getByName" parameterType = "String" resultMap = "result">
+		SELECT * FROM TABLE_USER WHERE USER_NAME = #{username};
+	</select>
+	
+	<update id = "update" parameterType = "User">
+		UPDATE TABLE_USER SET USER_PASSWORD = #{password} WHERE USER_NAME = #{username};
+	</update>
+	
+	<insert id = "insert" parameterType = "User">
+	   INSERT INTO TABLE_USER(USER_NAME, USER_PASSWORD) VALUES (#{username}, #{password});  
+	  <selectKey keyProperty = "userId" resultType = "int" order = "AFTER">
+         select last_insert_id() as id
+      </selectKey>   
+	</insert>
+	
+	<delete id = "delete" parameterType = "String">
+		DELETE FROM TABLE_USER WHERE USER_NAME = #{username};
+	</delete>
+	
+</mapper>

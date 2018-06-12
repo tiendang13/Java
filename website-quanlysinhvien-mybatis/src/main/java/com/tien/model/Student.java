@@ -50,15 +50,6 @@ public class Student {
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-	public Student(int id, String name, String code, String address, double score, Date dateOfBirth) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.code = code;
-		this.address = address;
-		this.score = score;
-		this.dateOfBirth = dateOfBirth;
-	}
 	public Student() {
 		super();
 	}
