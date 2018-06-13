@@ -46,7 +46,7 @@ public class LoginController {
 	          model.addAttribute("message", "User Name exists. Try another user name");
 	          return "signup";
 	      } else {
-	          userService.insertUser(user);;
+	          userService.insert(user);;
 	          model.addAttribute("message", "Saved student details");
 	          return "redirect:login.jsp";
 	      }

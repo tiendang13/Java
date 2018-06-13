@@ -19,7 +19,7 @@
    </environments>
 	
    <mappers>
-      <mapper resource = "mapper/StudentMapper.xml"/>
+      <mapper resource = "com/tien/mappers/StudentMapper.xml"/>
    </mappers>
    
 </configuration>

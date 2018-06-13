@@ -26,7 +26,7 @@
       </selectKey>   
 	</insert>
 	
-	<delete id = "delete" parameterType = "String">
+	<delete id = "deleteByName" parameterType = "String">
 		DELETE FROM TABLE_USER WHERE USER_NAME = #{username};
 	</delete>
 	
