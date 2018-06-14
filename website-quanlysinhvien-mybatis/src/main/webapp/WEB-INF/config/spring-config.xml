@@ -8,27 +8,38 @@
       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
 	<mvc:annotation-driven />
-	<context:component-scan base-package="com.tien" />
+	<context:component-scan base-package="com.tien.*" />
+	
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
+	
+	<bean name="/user.htm" class="com.tien.comtroller.LoginController" />
+	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/jsp" />
+		<property name="prefix" value="" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		    <property name = "driver" value = "com.mysql.jdbc.Driver"/>
             <property name = "url" value = "jdbc:mysql://localhost:3306/student"/>
             <property name = "username" value = "root"/>
             <property name = "password" value = "123456789"/>
 	</bean>
+	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="typeAliasesPackage" value="com.tien.model"/>
 		<property name="mapperLocations" value="classpath*:com/tien/mappers/*.xml" />
 	</bean>
+	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
+	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
   		<property name="basePackage" value="com.tien.mappers" />
 	</bean>
+	
 </beans>

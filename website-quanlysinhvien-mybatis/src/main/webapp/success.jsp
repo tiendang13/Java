@@ -5,9 +5,9 @@
 	<meta charset="utf-8">
 </head>
 <body>
-	<h2>Login Success!</h2>
+	<h2>Sign Up Success!</h2>
 	<div>
-		<button type="submit">Continue</button> 
+		<a href="login.jsp">You can log in here!</a>
 	</div>
 </body>
 </html>

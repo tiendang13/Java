@@ -12,43 +12,48 @@ import com.tien.model.User;
 import com.tien.services.UserService;
 
 @Controller
-@SessionAttributes("user")
+@SessionAttributes("/user")
 public class LoginController {
 	@Autowired
 	private UserService userService;
 	
-	  @RequestMapping(value="/login", method=RequestMethod.GET)
-	  public String login(Model model) {
-	      User user = new User();
-	      model.addAttribute("userLogin", user);
-	      return "login";
-	  }
-	  
-	  @RequestMapping(value="/login", method=RequestMethod.POST)
-		public String login(@ModelAttribute("userLogin") User user) {
-			boolean found = userService.login(user.getUsername(), user.getPassword());
-			if (found) {				
-				return "success";
-			} else {				
-				return "failure";
-			}
-	  }
-	  @RequestMapping(value="/signup", method=RequestMethod.GET)
-	  public String signup(Model model) {
-	      User user = new User();
-	      model.addAttribute("userSignup", user);
-	      return "signup";
-	  }
+	@RequestMapping(value="/hello", method=RequestMethod.GET)
+	public String hello() {
+		return "welcome";
+	}
 
-	  @RequestMapping(value="/signup", method=RequestMethod.POST)
-	  public String signup(@ModelAttribute("userSignup") User user, Model model) {
-	      if(userService.signUp(user.getUsername())) {
-	          model.addAttribute("message", "User Name exists. Try another user name");
-	          return "signup";
-	      } else {
-	          userService.insertUser(user);;
-	          model.addAttribute("message", "Saved student details");
-	          return "redirect:login.jsp";
-	      }
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public String login(Model model) {
+		User user = new User();
+		model.addAttribute("userLogin", user);
+		return "login";
+	}
+  
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String login(@ModelAttribute("userLogin") User user) {
+		boolean found = userService.login(user.getUsername(), user.getPassword());
+		if (found) {				
+			return "success";
+		} else {				
+			return "failure";
+		}
+	}
+	@RequestMapping(value="/signup", method=RequestMethod.GET)
+	public String signup(Model model) {
+		User user = new User();
+		model.addAttribute("user", user);
+		return "signup";
+	}
+
+	@RequestMapping(value="/signup", method=RequestMethod.POST)
+	public String signup(@ModelAttribute("user") User user, Model model) {
+		if(userService.signUp(user.getUsername())) {
+			model.addAttribute("message", "User Name exists. Try another user name");
+			return "signup";
+		} else {
+			userService.insertUser(user);;
+			model.addAttribute("message", "Saved student details");
+			return "redirect:login.jsp";
+		}
 	  }
 }
